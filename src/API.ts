@@ -1,11 +1,28 @@
 import { url } from "./const";
-import { IOrder } from "./interfaces/interfaces";
+import { IOrder, IProduct } from "./interfaces/interfaces";
 
-const API = {
+export const OrdersApi = {
   fetchOrders: async (): Promise<IOrder> => {
     const endpoint = `${url}orders.json`;
     return await (await fetch(endpoint)).json();
   },
 };
 
-export default API;
+export const ProductsApi = {
+  fetchProducts: async (): Promise<IProduct> => {
+    const endpoint = `${url}products.json`;
+    return await (await fetch(endpoint)).json();
+  },
+
+  async addProduct(product: IProduct) {
+    const endpoint = `${url}products.json`;
+    try {
+      await fetch(endpoint, {
+        method: "POST",
+        body: JSON.stringify(product),
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  },
+};

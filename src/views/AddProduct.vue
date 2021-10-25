@@ -30,7 +30,10 @@ export default {
   },
   methods: {
     addProduct() {
-      this.$store.dispatch("addProduct", this.product);
+      this.$store.dispatch("addProduct", this.product).then(() => {
+        this.$router.push({ name: "products" });
+        this.product = this.createNewProductObj();
+      });
     },
     createNewProductObj() {
       const id = Math.floor(Math.random() * 100000);

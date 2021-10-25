@@ -5,3 +5,10 @@ export interface IOrder {
   ref: string;
   status: { code: string; id: number };
 }
+
+export interface IProduct {
+  id: number;
+  name: string;
+  ref: string;
+  category: string;
+}

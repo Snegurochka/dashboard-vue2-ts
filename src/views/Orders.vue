@@ -15,7 +15,7 @@
 
 <script>
 import OrderItem from "./../components/OrderItem.vue";
-import API from "./../API";
+import { OrdersApi } from "./../API";
 
 export default {
   components: { OrderItem },
@@ -25,7 +25,7 @@ export default {
     };
   },
   async created() {
-    this.orders = await API.fetchOrders();
+    this.orders = await OrdersApi.fetchOrders();
   },
 };
 </script>

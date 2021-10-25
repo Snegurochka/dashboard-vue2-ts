@@ -1,6 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
+import { ProductsApi } from "@/API";
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -30,8 +32,10 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    addProduct({ commit }, product) {
-      commit("ADD_PRODUCT", product);
+    async addProduct({ commit }, product) {
+      return ProductsApi.addProduct(product).then(() => {
+        commit("ADD_PRODUCT", product);
+      });
     },
   },
   modules: {},
