@@ -9,8 +9,8 @@ export default new Vuex.Store({
   state: {
     user: { name: "Demo" },
     categories: [
-      { id: 1, name: "Cat 1" },
-      { id: 2, name: "Cat 2" },
+      { id: 1, name: "Home decor" },
+      { id: 2, name: "Hand Craft" },
     ],
     products: [
       { id: 1, name: "Dress1" },
@@ -30,11 +30,19 @@ export default new Vuex.Store({
     ADD_PRODUCT(s, product) {
       s.products.push(product);
     },
+    SET_PRODUCTS(s, products) {
+      s.products = products;
+    },
   },
   actions: {
     async addProduct({ commit }, product) {
       return ProductsApi.addProduct(product).then(() => {
         commit("ADD_PRODUCT", product);
+      });
+    },
+    setProducts({ commit }, products) {
+      ProductsApi.fetchProducts().then((data) => {
+        commit("SET_PRODUCTS", data);
       });
     },
   },

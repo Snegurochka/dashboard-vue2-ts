@@ -21,6 +21,9 @@ import { mapState, mapGetters } from "vuex";
 
 export default {
   components: { ProductItem },
+  created() {
+    this.$store.dispatch("setProducts");
+  },
   computed: {
     ...mapGetters(["productsCount"]),
     ...mapState(["user", "products"]),

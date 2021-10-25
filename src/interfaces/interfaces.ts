@@ -7,8 +7,11 @@ export interface IOrder {
 }
 
 export interface IProduct {
-  id: number;
-  name: string;
-  ref: string;
-  category: string;
+  id: 12;
+  id_category: number;
+  id_seller: number;
+  price: number;
+  quantity: number;
+  title: string;
+  description: string;
 }
