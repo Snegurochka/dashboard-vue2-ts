@@ -1,6 +1,7 @@
 <template>
   <section>
     <h3>Products</h3>
+    <router-link :to="{ name: 'add-product' }"> add </router-link>
     <div class="products__list">
       <ProductItem
         class="product__item"

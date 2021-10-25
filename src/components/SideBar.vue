@@ -21,6 +21,7 @@ export default {
     items: [
       { icon: "fas fa-home", text: "Home", route: "home" },
       { icon: "fas fa-th-large", text: "Profile", route: "profile" },
+      { icon: "fas fa-calendar", text: "Products", route: "products" },
       { icon: "fas fa-calendar", text: "Orders", route: "orders" },
     ],
   }),

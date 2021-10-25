@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
+import About from "../views/About.vue";
 import OrderDetail from "../views/OrderDetail.vue";
 
 Vue.use(VueRouter);
@@ -14,26 +15,23 @@ const routes: Array<RouteConfig> = [
   {
     path: "/profile",
     name: "profile",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    component: About,
   },
   {
     path: "/orders",
     name: "orders",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Orders.vue"),
+    component: () => import("../views/Orders.vue"),
   },
   {
     path: "/order/:id",
     name: "order",
     component: OrderDetail,
     props: true,
+  },
+  {
+    path: "/products",
+    name: "products",
+    component: () => import("../views/Products.vue"),
   },
 ];
 
