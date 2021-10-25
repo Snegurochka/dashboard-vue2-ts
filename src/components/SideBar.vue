@@ -1,5 +1,6 @@
 <template>
   <div class="sidebar">
+    <span>Hi, {{ userName }}</span>
     <nav class="navbar">
       <router-link
         v-for="(item, ind) in items"
@@ -25,6 +26,12 @@ export default {
       { icon: "fas fa-calendar", text: "Orders", route: "orders" },
     ],
   }),
+
+  computed: {
+    userName() {
+      return this.$store.state.user.name;
+    },
+  },
 };
 </script>
 
