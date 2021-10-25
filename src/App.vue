@@ -1,14 +1,35 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <section class="wrapper">
+      <SideBar></SideBar>
+      <router-view />
+    </section>
   </div>
 </template>
 
+<script>
+import SideBar from "./components/SideBar";
+
+export default {
+  name: "App",
+
+  components: {
+    SideBar,
+  },
+};
+</script>
+
 <style lang="scss">
+:root {
+  --maxWidth: 1280px;
+  --white: #fff;
+  --lightGrey: #dedede;
+  --lightBlue: #dbeafe;
+  --darkGrey: #3f4d67;
+  --primary: #80ceca;
+  --primary-hover: #40a6a0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -17,16 +38,14 @@
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+.wrapper {
+  display: grid;
+  grid-template-columns: 235px 1fr;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  h1 {
+    font-weight: 600;
+    font-size: 40px;
+    margin: 0;
   }
 }
 </style>

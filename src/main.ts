@@ -2,6 +2,9 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import BaseDashCard from "@/components/BaseDashCard.vue";
+
+Vue.component("BaseDashCard", BaseDashCard);
 
 Vue.config.productionTip = false;
 
