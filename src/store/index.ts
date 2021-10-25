@@ -6,6 +6,10 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     user: { name: "Demo" },
+    categories: [
+      { id: 1, name: "Cat 1" },
+      { id: 2, name: "Cat 2" },
+    ],
     products: [
       { id: 1, name: "Dress1" },
       { id: 2, name: "Dress2" },
@@ -20,8 +24,16 @@ export default new Vuex.Store({
       },
     ],
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    ADD_PRODUCT(s, product) {
+      s.products.push(product);
+    },
+  },
+  actions: {
+    addProduct({ commit }, product) {
+      commit("ADD_PRODUCT", product);
+    },
+  },
   modules: {},
   getters: {
     //Products

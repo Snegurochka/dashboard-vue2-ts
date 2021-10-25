@@ -1,9 +1,47 @@
 <template>
-  <form>Add product</form>
+  <form @submit.prevent="addProduct">
+    <h3>Add product</h3>
+    <p>
+      <label>Product name</label>
+      <input type="text" v-model="product.name" />
+    </p>
+    <p>
+      <label>Category</label>
+      <select type="text" v-model="product.category">
+        <option v-for="category in categories" :key="category.id">
+          {{ category.name }}
+        </option>
+      </select>
+    </p>
+    <input type="submit" value="Add" />
+  </form>
 </template>
 
 <script>
-export default {};
+import { mapState } from "vuex";
+export default {
+  data() {
+    return {
+      product: this.createNewProductObj(),
+    };
+  },
+  computed: {
+    ...mapState(["user", "categories"]),
+  },
+  methods: {
+    addProduct() {
+      this.$store.dispatch("addProduct", this.product);
+    },
+    createNewProductObj() {
+      const id = Math.floor(Math.random() * 100000);
+      return {
+        id,
+        name: "",
+        category: "",
+      };
+    },
+  },
+};
 </script>
 
 <style></style>
