@@ -5,19 +5,19 @@
     <div class="products__list">
       <ProductItem
         class="product__item"
-        v-for="product in products"
-        :key="product.id"
+        v-for="(product, index) in products"
+        :key="index"
         :product="product"
       >
       </ProductItem>
     </div>
-    <div>Total: {{ productsCount }}</div>
+    <button @click="loadmore" v-if="!products_end">Load more</button>
   </section>
 </template>
 
 <script>
 import ProductItem from "../components/ProductItem.vue";
-import { mapState, mapGetters } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   components: { ProductItem },
@@ -25,8 +25,13 @@ export default {
     this.$store.dispatch("setProducts");
   },
   computed: {
-    ...mapGetters(["productsCount"]),
-    ...mapState(["user", "products"]),
+    //...mapGetters(["productsCount"]),
+    ...mapState(["user", "products", "products_end"]),
+  },
+  methods: {
+    loadmore() {
+      this.$store.dispatch("setProducts");
+    },
   },
 };
 </script>

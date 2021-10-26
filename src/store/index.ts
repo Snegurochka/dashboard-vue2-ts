@@ -3,6 +3,7 @@ import Vuex from "vuex";
 
 import { ProductsApi } from "@/API";
 import { IOrder, IProduct } from "@/interfaces/interfaces";
+import { limitToFirst } from "@/const";
 
 Vue.use(Vuex);
 
@@ -14,6 +15,8 @@ export default new Vuex.Store({
       { id: 2, name: "Hand Craft" },
     ],
     products: [] as IProduct[],
+    products_end: false,
+    product: {} as IProduct,
     orders: [] as IOrder[],
   },
   mutations: {
@@ -21,7 +24,13 @@ export default new Vuex.Store({
       s.products.push(product);
     },
     SET_PRODUCTS(s, products) {
-      s.products = products;
+      s.products = [...s.products, ...products];
+    },
+    SET_PRODUCTS_END(s, payload) {
+      s.products_end = payload;
+    },
+    SET_PRODUCT(s, product) {
+      s.product = product;
     },
   },
   actions: {
@@ -31,8 +40,30 @@ export default new Vuex.Store({
       });
     },
     setProducts({ commit }) {
-      ProductsApi.fetchProducts().then((data) => {
-        commit("SET_PRODUCTS", data);
+      let startAt = "";
+
+      if (this.state.products.length) {
+        startAt =
+          "&startAt=" + this.state.products[this.state.products.length - 1].id;
+      }
+
+      ProductsApi.fetchProducts(startAt).then((data) => {
+        let products = data.filter((item) => item !== null);
+        if (products.length < limitToFirst) {
+          commit("SET_PRODUCTS_END", true);
+        }
+        if (this.state.products.length) {
+          products = products.slice(1, products.length);
+        }
+        commit("SET_PRODUCTS", products);
+      });
+    },
+
+    setProduct({ commit }, id) {
+      ProductsApi.fetchProduct(id).then((data) => {
+        console.log(data);
+
+        commit("SET_PRODUCT", data);
       });
     },
   },

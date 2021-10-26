@@ -7,3 +7,5 @@ export enum orderStatusesEnum {
   paidId = 2,
   shippedId = 4,
 }
+
+export const limitToFirst = 4;
