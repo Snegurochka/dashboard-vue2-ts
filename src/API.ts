@@ -32,7 +32,7 @@ export const ProductsApi = {
   },
 
   fetchProduct: async (id: string): Promise<IProduct> => {
-    const endpoint = url + "products/id/" + id + ".json";
+    const endpoint = url + "products/" + id + ".json";
     return await (await fetch(endpoint)).json();
   },
 };

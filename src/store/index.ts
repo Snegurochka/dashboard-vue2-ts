@@ -59,17 +59,23 @@ export default new Vuex.Store({
       });
     },
 
-    setProduct({ commit }, id) {
-      ProductsApi.fetchProduct(id).then((data) => {
-        console.log(data);
-
-        commit("SET_PRODUCT", data);
-      });
+    setProduct({ commit, getters }, id) {
+      const product = getters.getProductById(id);
+      if (product) {
+        commit("SET_PRODUCT", product);
+      } else {
+        ProductsApi.fetchProduct(id).then((data) => {
+          commit("SET_PRODUCT", data);
+        });
+      }
     },
   },
   modules: {},
   getters: {
-    //Products
+    // Categories
+    getCategoryById: (s) => (id: number) =>
+      s.categories.find((item) => item.id === id),
+    // Products
     productsCount: (s) => s.products.length,
     getProductById: (s) => (id: number) =>
       s.products.find((item) => item.id === id),
