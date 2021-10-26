@@ -7,7 +7,7 @@ export interface IOrder {
 }
 
 export interface IProduct {
-  id: 12;
+  id: number;
   id_category: number;
   id_seller: number;
   price: number;

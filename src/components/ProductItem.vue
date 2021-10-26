@@ -22,7 +22,7 @@ export default {
 <style scoped>
 .wrapper {
   display: grid;
-  grid-template-columns: 30px 1fr 60px 60px 120px;
+  grid-template-columns: 60px 1fr 60px 60px 120px;
   gap: 8px;
   padding: 14px;
   text-align: left;

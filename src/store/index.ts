@@ -2,29 +2,19 @@ import Vue from "vue";
 import Vuex from "vuex";
 
 import { ProductsApi } from "@/API";
+import { IOrder, IProduct } from "@/interfaces/interfaces";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    user: { name: "Demo" },
+    user: { id: 1, name: "Demo" },
     categories: [
       { id: 1, name: "Home decor" },
       { id: 2, name: "Hand Craft" },
     ],
-    products: [
-      { id: 1, name: "Dress1" },
-      { id: 2, name: "Dress2" },
-    ],
-    orders: [
-      {
-        customer: "Alex",
-        id: 1,
-        product: "Dress1",
-        ref: "REF_1",
-        status: { code: "Shipped", id: 2 },
-      },
-    ],
+    products: [] as IProduct[],
+    orders: [] as IOrder[],
   },
   mutations: {
     ADD_PRODUCT(s, product) {
@@ -40,7 +30,7 @@ export default new Vuex.Store({
         commit("ADD_PRODUCT", product);
       });
     },
-    setProducts({ commit }, products) {
+    setProducts({ commit }) {
       ProductsApi.fetchProducts().then((data) => {
         commit("SET_PRODUCTS", data);
       });

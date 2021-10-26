@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import OrderDetail from "../views/OrderDetail.vue";
 import AddProduct from "../views/AddProduct.vue";
+import Product from "../views/Product.vue";
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,12 @@ const routes: Array<RouteConfig> = [
     path: "/products",
     name: "products",
     component: () => import("../views/Products.vue"),
+  },
+  {
+    path: "/product/:id",
+    name: "product",
+    component: Product,
+    props: true,
   },
   {
     path: "/add-product",
