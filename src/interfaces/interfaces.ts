@@ -1,3 +1,22 @@
+import { productStateType } from "@/store/modules/products";
+
+export interface RootState {
+  categories: ICategory[];
+  orders: IOrder[];
+  user?: IUser;
+  products?: productStateType;
+}
+
+export interface IUser {
+  id: number;
+  name: string;
+}
+
+export interface ICategory {
+  id: number;
+  name: string;
+}
+
 export interface IOrder {
   customer: string;
   id: number;

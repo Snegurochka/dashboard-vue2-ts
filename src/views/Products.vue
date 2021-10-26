@@ -1,37 +1,38 @@
 <template>
   <section>
-    <h3>Products {{ user.name }}</h3>
+    <h3>Products {{ user.user.name }}</h3>
     <router-link :to="{ name: 'add-product' }"> add </router-link>
     <div class="products__list">
       <ProductItem
         class="product__item"
-        v-for="(product, index) in products"
+        v-for="(product, index) in products.products"
         :key="index"
         :product="product"
       >
       </ProductItem>
     </div>
-    <button @click="loadmore" v-if="!products_end">Load more</button>
+    <button @click="loadmore" v-if="!products.products_end">Load more</button>
   </section>
 </template>
 
-<script>
+<script lang="ts">
 import ProductItem from "../components/ProductItem.vue";
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 export default {
   components: { ProductItem },
-  created() {
-    this.$store.dispatch("setProducts");
+  created(): void {
+    this.setProducts();
   },
   computed: {
     //...mapGetters(["productsCount"]),
-    ...mapState(["user", "products", "products_end"]),
+    ...mapState(["user", "products"]),
   },
   methods: {
-    loadmore() {
-      this.$store.dispatch("setProducts");
+    loadmore(): void {
+      this.setProducts();
     },
+    ...mapActions("products", ["setProducts"]),
   },
 };
 </script>
