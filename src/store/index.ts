@@ -3,8 +3,9 @@ import Vuex from "vuex";
 
 import * as user from "@/store/modules/user";
 import * as products from "@/store/modules/products";
+import * as notifications from "@/store/modules/notifications";
 
-import { ICategory, IOrder } from "@/interfaces/interfaces";
+import { ICategory, IOrder, RootState } from "@/interfaces/interfaces";
 
 Vue.use(Vuex);
 
@@ -12,12 +13,13 @@ export default new Vuex.Store({
   state: {
     categories: [] as ICategory[],
     orders: [] as IOrder[],
-  },
+  } as RootState,
   mutations: {},
   actions: {},
   modules: {
     user,
     products,
+    notifications,
   },
   getters: {
     // Categories

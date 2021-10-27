@@ -1,10 +1,12 @@
+import { notificationStateType } from "@/store/modules/notifications";
 import { productStateType } from "@/store/modules/products";
 
 export interface RootState {
   categories: ICategory[];
   orders: IOrder[];
-  user?: IUser;
-  products?: productStateType;
+  user: IUser;
+  products: productStateType;
+  notifications: notificationStateType;
 }
 
 export interface IUser {
@@ -33,4 +35,10 @@ export interface IProduct {
   quantity: number;
   title: string;
   description: string;
+}
+
+export interface INotification {
+  id: number;
+  type: string;
+  message: string;
 }

@@ -19,7 +19,7 @@ export const ProductsApi = {
     return await (await fetch(endpoint)).json();
   },
 
-  async addProduct(product: IProduct) {
+  async addProduct(product: IProduct): Promise<void> {
     const endpoint = `${url}products.json`;
     try {
       await fetch(endpoint, {

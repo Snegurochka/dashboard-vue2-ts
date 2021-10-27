@@ -1,7 +1,7 @@
 import { ProductsApi } from "@/API";
 import { limitToFirst } from "@/const";
 import { IProduct, RootState } from "@/interfaces/interfaces";
-import { ActionTree } from "vuex";
+import { ActionTree, GetterTree, MutationTree } from "vuex";
 
 export const namespaced = true;
 
@@ -13,7 +13,7 @@ export const state = {
 
 export type productStateType = typeof state;
 
-export const mutations = {
+export const mutations: MutationTree<productStateType> = {
   ADD_PRODUCT(s: productStateType, product: IProduct) {
     s.products.push(product);
   },
@@ -29,28 +29,46 @@ export const mutations = {
 };
 
 export const actions: ActionTree<productStateType, RootState> = {
-  async addProduct({ commit }, product: IProduct) {
-    return ProductsApi.addProduct(product).then(() => {
-      commit("ADD_PRODUCT", product);
-    });
+  async addProduct({ commit, dispatch }, product: IProduct) {
+    return ProductsApi.addProduct(product)
+      .then(() => {
+        commit("ADD_PRODUCT", product);
+      })
+      .catch((error) => {
+        const notification = {
+          id: "",
+          type: "error",
+          message: "There was a problem:" + error,
+        };
+        dispatch("notifications/add", notification, { root: true });
+      });
   },
-  setProducts({ commit }) {
+  setProducts({ commit, dispatch }) {
     let startAt = "";
 
     if (state.products.length) {
       startAt = "&startAt=" + state.products[state.products.length - 1].id;
     }
 
-    ProductsApi.fetchProducts(startAt).then((data) => {
-      let products = data.filter((item) => item !== null);
-      if (products.length < limitToFirst) {
-        commit("SET_PRODUCTS_END", true);
-      }
-      if (state.products.length) {
-        products = products.slice(1, products.length);
-      }
-      commit("SET_PRODUCTS", products);
-    });
+    ProductsApi.fetchProducts(startAt)
+      .then((data) => {
+        let products = data.filter((item) => item !== null);
+        if (products.length < limitToFirst) {
+          commit("SET_PRODUCTS_END", true);
+        }
+        if (state.products.length) {
+          products = products.slice(1, products.length);
+        }
+        commit("SET_PRODUCTS", products);
+      })
+      .catch((error) => {
+        const notification = {
+          id: "",
+          type: "error",
+          message: "There was a problem:" + error,
+        };
+        dispatch("notifications/add", notification, { root: true });
+      });
   },
 
   setProduct({ commit, getters }, id: string) {
@@ -58,15 +76,19 @@ export const actions: ActionTree<productStateType, RootState> = {
     if (product) {
       commit("SET_PRODUCT", product);
     } else {
-      ProductsApi.fetchProduct(id).then((data) => {
-        commit("SET_PRODUCT", data);
-      });
+      ProductsApi.fetchProduct(id)
+        .then((data) => {
+          commit("SET_PRODUCT", data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   },
 };
 
-export const getters = {
-  productsCount: (s: productStateType) => s.products.length,
+export const getters: GetterTree<productStateType, RootState> = {
+  productsCount: (s: productStateType): number => s.products.length,
   getProductById: (s: productStateType) => (id: number) =>
     s.products.find((item) => item.id === id),
 };

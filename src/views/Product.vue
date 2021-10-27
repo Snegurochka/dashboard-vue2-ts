@@ -2,30 +2,25 @@
   <div>
     <h3>Product {{ product.title }}</h3>
     {{ product.price }}$
-    <p>Category: {{ getCategoryById(product.id_category).name }}</p>
     <p>
       {{ product.description }}
     </p>
   </div>
 </template>
 
-<script lang="ts">
-import { mapState, mapGetters, mapActions } from "vuex";
-import { RootState } from "../interfaces/interfaces";
+<script>
+import { mapState } from "vuex";
+
 export default {
   props: ["id"],
-  created(): void {
-    this.setProduct(this.id);
+  created() {
+    this.$store.dispatch("products/setProduct", this.id);
   },
   computed: {
-    ...mapGetters(["getCategoryById"]),
     ...mapState({
-      product: (s: RootState) => s.products.product,
-      categories: (s: RootState) => s.categories,
+      product: (s) => s.products.product,
+      categories: (s) => s.categories,
     }),
-  },
-  methods: {
-    ...mapActions("products", ["setProduct"]),
   },
 };
 </script>

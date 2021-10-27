@@ -15,24 +15,23 @@
   </section>
 </template>
 
-<script lang="ts">
+<script>
 import ProductItem from "../components/ProductItem.vue";
-import { mapState, mapActions } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   components: { ProductItem },
-  created(): void {
-    this.setProducts();
+  created() {
+    this.$store.dispatch("products/setProducts");
   },
   computed: {
     //...mapGetters(["productsCount"]),
     ...mapState(["user", "products"]),
   },
   methods: {
-    loadmore(): void {
-      this.setProducts();
+    loadmore() {
+      this.$store.dispatch("products/setProducts");
     },
-    ...mapActions("products", ["setProducts"]),
   },
 };
 </script>
