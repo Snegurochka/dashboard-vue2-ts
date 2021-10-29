@@ -5,6 +5,7 @@ import About from "../views/About.vue";
 import OrderDetail from "../views/OrderDetail.vue";
 import AddProduct from "../views/AddProduct.vue";
 import Product from "../views/Product.vue";
+import NotFound from "../views/NotFound.vue";
 
 Vue.use(VueRouter);
 
@@ -45,6 +46,15 @@ const routes: Array<RouteConfig> = [
     path: "/add-product",
     name: "add-product",
     component: AddProduct,
+  },
+  {
+    path: "/404",
+    name: "404",
+    component: NotFound,
+  },
+  {
+    path: "*",
+    redirect: { name: "404" },
   },
 ];
 
