@@ -7,6 +7,7 @@ export const namespaced = true;
 
 export const state = {
   products: [] as IProduct[],
+  isLoading: false,
   products_end: false,
   product: {} as IProduct,
 };
@@ -26,6 +27,9 @@ export const mutations: MutationTree<productStateType> = {
   SET_PRODUCT(s: productStateType, product: IProduct) {
     s.product = product;
   },
+  SET_LOADING(s: productStateType, isload) {
+    s.isLoading = isload;
+  },
 };
 
 export const actions: ActionTree<productStateType, RootState> = {
@@ -44,6 +48,7 @@ export const actions: ActionTree<productStateType, RootState> = {
       });
   },
   setProducts({ commit, dispatch }) {
+    commit("SET_LOADING", true);
     let startAt = "";
 
     if (state.products.length) {
@@ -60,6 +65,7 @@ export const actions: ActionTree<productStateType, RootState> = {
           products = products.slice(1, products.length);
         }
         commit("SET_PRODUCTS", products);
+        commit("SET_LOADING", false);
       })
       .catch((error) => {
         const notification = {
@@ -68,6 +74,7 @@ export const actions: ActionTree<productStateType, RootState> = {
           message: "There was a problem:" + error,
         };
         dispatch("notifications/add", notification, { root: true });
+        commit("SET_LOADING", false);
       });
   },
 
