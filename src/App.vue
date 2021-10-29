@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <section class="wrapper">
+    <section class="main_wrapper">
       <SideBar></SideBar>
       <router-view />
     </section>
@@ -38,7 +38,7 @@ export default {
   color: #2c3e50;
 }
 
-.wrapper {
+.main_wrapper {
   display: grid;
   grid-template-columns: 235px 1fr;
 

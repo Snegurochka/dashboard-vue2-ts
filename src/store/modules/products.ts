@@ -9,6 +9,7 @@ export const state = {
   products: [] as IProduct[],
   isLoading: false,
   products_end: false,
+  isError: false,
   product: {} as IProduct,
 };
 
@@ -27,8 +28,11 @@ export const mutations: MutationTree<productStateType> = {
   SET_PRODUCT(s: productStateType, product: IProduct) {
     s.product = product;
   },
-  SET_LOADING(s: productStateType, isload) {
+  SET_LOADING(s: productStateType, isload: boolean) {
     s.isLoading = isload;
+  },
+  SET_ERROR(s: productStateType, isError: boolean) {
+    s.isError = isError;
   },
 };
 
@@ -44,6 +48,7 @@ export const actions: ActionTree<productStateType, RootState> = {
           type: "error",
           message: "There was a problem:" + error,
         };
+        // Request to another module
         dispatch("notifications/add", notification, { root: true });
       });
   },
@@ -79,15 +84,22 @@ export const actions: ActionTree<productStateType, RootState> = {
   },
 
   setProduct({ commit, getters }, id: string) {
+    commit("SET_ERROR", false);
     const product = getters.getProductById(id);
     if (product) {
       commit("SET_PRODUCT", product);
     } else {
       ProductsApi.fetchProduct(id)
         .then((data) => {
-          commit("SET_PRODUCT", data);
+          // API doesn't send an error when product doesn't exist
+          if (!data) {
+            commit("SET_ERROR", true);
+          } else {
+            commit("SET_PRODUCT", data);
+          }
         })
         .catch((error) => {
+          // API doesn't send an error when product doesn't exist
           console.log(error);
         });
     }

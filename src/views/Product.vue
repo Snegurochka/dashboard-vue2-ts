@@ -1,11 +1,19 @@
 <template>
-  <div>
-    <h3>Product {{ product.title }}</h3>
-    {{ product.price }}$
-    <p>
-      {{ product.description }}
-    </p>
-  </div>
+  <section class="wrapper">
+    <div v-if="!isError">
+      <h3>Product {{ product.title }}</h3>
+      {{ product.price }}$
+      <p>
+        {{ product.description }}
+      </p>
+    </div>
+    <div v-else>
+      <h3>Opps! This product not found</h3>
+      <router-link :to="{ name: 'products' }"
+        >Back to the products page</router-link
+      >
+    </div>
+  </section>
 </template>
 
 <script>
@@ -19,6 +27,7 @@ export default {
   computed: {
     ...mapState({
       product: (s) => s.products.product,
+      isError: (s) => s.products.isError,
       categories: (s) => s.categories,
     }),
   },
