@@ -1,6 +1,7 @@
 <template>
   <section>
     <h3>Products {{ user.user.name }}</h3>
+    <Loading v-if="products.isLoading" />
     <router-link :to="{ name: 'add-product' }"> add </router-link>
     <div class="products__list">
       <ProductItem
@@ -17,10 +18,11 @@
 
 <script>
 import ProductItem from "../components/ProductItem.vue";
+import Loading from "../components/Loading.vue";
 import { mapState } from "vuex";
 
 export default {
-  components: { ProductItem },
+  components: { ProductItem, Loading },
   created() {
     this.$store.dispatch("products/setProducts");
   },
