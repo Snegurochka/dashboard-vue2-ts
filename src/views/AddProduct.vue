@@ -1,10 +1,11 @@
 <template>
   <form @submit.prevent="addProduct">
     <h3>Add product</h3>
-    <p>
-      <label>Product name</label>
-      <input type="text" v-model="product.title" />
-    </p>
+    <BaseInput
+      label="Product name"
+      v-model="product.title"
+      placeholder="Title"
+    />
     <p>
       <label>Category</label>
       <select type="text" v-model="product.category">
@@ -17,14 +18,8 @@
         </option>
       </select>
     </p>
-    <p>
-      <label>Price</label>
-      <input type="text" v-model="product.price" />
-    </p>
-    <p>
-      <label>Quantity</label>
-      <input type="number" v-model="product.quantity" />
-    </p>
+    <BaseInput label="Price" v-model="product.price" />
+    <BaseInput label="Quantity" type="number" v-model="product.quantity" />
     <p>
       <label>Description</label>
       <textarea v-model="product.description"></textarea>

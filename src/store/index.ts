@@ -11,7 +11,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    categories: [] as ICategory[],
+    categories: [
+      { id: 1, name: "Cat 1" },
+      { id: 2, name: "Cat 2" },
+    ] as ICategory[],
     orders: [] as IOrder[],
   } as RootState,
   mutations: {},
