@@ -11,7 +11,7 @@
 https://github.com/vuelidate/vuelidate
 <p>
 <img src="https://vuelidate-next.netlify.app/logotype.png" alt="vue-chartjs" width="200px">
-<img src="https://vue-chartjs.org/vue-chartjs.png" alt="Vuelidate" width="200px">
+<img src="https://vue-chartjs.org/vue-chartjs.png" alt="Vuelidate" width="75px">
 </p>
 
 ## Technologies used: 
