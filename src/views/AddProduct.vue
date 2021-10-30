@@ -6,18 +6,11 @@
       v-model="product.title"
       placeholder="Title"
     />
-    <p>
-      <label>Category</label>
-      <select type="text" v-model="product.category">
-        <option
-          v-for="category in categories"
-          :key="category.id"
-          :value="category.id"
-        >
-          {{ category.name }}
-        </option>
-      </select>
-    </p>
+    <BaseSelectObj
+      label="Category"
+      :options="categories"
+      v-model="product.id_category"
+    />
     <BaseInput label="Price" v-model="product.price" />
     <BaseInput label="Quantity" type="number" v-model="product.quantity" />
     <p>
