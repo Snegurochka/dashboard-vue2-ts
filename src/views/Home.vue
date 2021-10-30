@@ -2,6 +2,7 @@
   <section class="wrapp">
     <main>
       <h1>Dashboard</h1>
+      <WsChart />
       <BaseBlockOverview header="Last orders">
         <ul>
           <li v-for="order in LastOrdersMoc" :key="order.id" class="item">
@@ -28,8 +29,11 @@
 <script>
 // moc
 import { LastOrdersMoc } from "@/store/moc";
+import WsChart from "@/components/WsChart";
+
 export default {
   name: "Home",
+  components: { WsChart },
   data() {
     return {
       LastOrdersMoc,
