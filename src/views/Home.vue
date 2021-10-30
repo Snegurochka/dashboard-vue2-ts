@@ -22,21 +22,25 @@
         </ul>
       </BaseBlockOverview>
     </main>
-    <aside class="asideOverview"></aside>
+    <aside class="asideOverview">
+      <BlockProgress header="Sales" :data="salesMoc" />
+    </aside>
   </section>
 </template>
 
 <script>
 // moc
-import { LastOrdersMoc } from "@/store/moc";
+import { LastOrdersMoc, salesMoc } from "@/store/moc";
 import WsChart from "@/components/WsChart";
+import BlockProgress from "@/components/BlockProgress";
 
 export default {
   name: "Home",
-  components: { WsChart },
+  components: { WsChart, BlockProgress },
   data() {
     return {
       LastOrdersMoc,
+      salesMoc,
     };
   },
 };
