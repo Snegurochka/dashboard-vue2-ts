@@ -17,7 +17,7 @@
       <label>Description</label>
       <textarea v-model="product.description"></textarea>
     </p>
-    <input type="submit" value="Add" />
+    <BaseButton>Add</BaseButton>
   </form>
 </template>
 
