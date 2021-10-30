@@ -1,41 +1,53 @@
 <template>
   <div class="sidebar">
-    <span>Hi, {{ userName }}</span>
+    <span class="user">Hi, {{ userName }}</span>
     <nav class="navbar">
       <router-link
         v-for="(item, ind) in items"
         :key="ind"
         class="navbar__item"
         :to="{ name: item.route }"
-        >{{ item.text }}</router-link
+        ><font-awesome-icon :icon="item.icon" class="icon" />{{
+          item.text
+        }}</router-link
       >
     </nav>
   </div>
 </template>
 
 <script>
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faUserSecret,
+  faHome,
+  faFolder,
+  faShoppingBag,
+} from "@fortawesome/free-solid-svg-icons";
+
+library.add(faUserSecret, faHome, faFolder, faShoppingBag);
+
 export default {
   name: "SideBar",
 
   data: () => ({
     selectedItem: 0,
     items: [
-      { icon: "fas fa-home", text: "Home", route: "home" },
-      { icon: "fas fa-th-large", text: "Profile", route: "profile" },
-      { icon: "fas fa-calendar", text: "Products", route: "products" },
-      { icon: "fas fa-calendar", text: "Orders", route: "orders" },
+      { icon: "home", text: "Home", route: "home" },
+      { icon: "user-secret", text: "Profile", route: "profile" },
+      { icon: "folder", text: "Products", route: "products" },
+      { icon: "shopping-bag", text: "Orders", route: "orders" },
     ],
   }),
 
   computed: {
     userName() {
-      return this.$store.state.user.name;
+      return this.$store.state.user.user.name;
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
 .sidebar {
   display: flex;
   flex-wrap: wrap;
@@ -44,6 +56,11 @@ export default {
   background: var(--darkGrey);
   box-shadow: 1px 0 20px 0 var(--darkGrey);
   z-index: 99;
+}
+
+.user {
+  padding: 24px;
+  color: var(--white);
 }
 
 .navbar {
@@ -65,5 +82,9 @@ export default {
 
 .navbar__item.active {
   color: #1dc4e9;
+}
+
+.icon {
+  padding-right: 8px;
 }
 </style>

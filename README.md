@@ -1,5 +1,8 @@
 # Seller Dashboard
 
+# Preview
+!["Seller Dashboard"](http://web-esse.ru/wp-includes/assets/seller_dashboard.png "Seller Dashboard")
+
 ## Pages:
 - Dashboard - Shows an awesome sales chart via vue-chartjs. https://vue-chartjs.org/
 - Products List
