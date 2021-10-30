@@ -20,25 +20,51 @@ export default {
 </script>
 
 <style lang="scss">
+/* css reset */
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  all: unset;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
 :root {
   --maxWidth: 1280px;
   --white: #fff;
   --lightGrey: #dedede;
   --lightBlue: #dbeafe;
   --darkGrey: #3f4d67;
+  --bg: #f4f7fa;
   --primary: #80ceca;
   --primary-hover: #40a6a0;
 }
 
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
 .main_wrapper {
+  max-width: 100%;
   display: grid;
   grid-template-columns: 235px 1fr;
 
