@@ -38,7 +38,7 @@ export default {
 
 .text {
   color: var(--white);
-  font-size: 24px;
-  padding: 24px;
+  font-size: 26px;
+  padding: 26px 28px;
 }
 </style>

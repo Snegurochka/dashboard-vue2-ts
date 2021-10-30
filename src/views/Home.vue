@@ -2,7 +2,11 @@
   <section class="wrapp">
     <main>
       <h1>Dashboard</h1>
-      <WsChart />
+      <div class="chart">
+        <span class="dataRange">January - May, 2021</span>
+        <WsChart />
+      </div>
+
       <BaseBlockOverview header="Last orders">
         <ul>
           <li v-for="order in LastOrdersMoc" :key="order.id" class="item">
@@ -24,7 +28,10 @@
     </main>
     <aside class="asideOverview">
       <BlockProgress header="Sales" :data="salesMoc" />
-      <Banner>Upgrade to pro</Banner>
+      <Banner
+        >Upgrade <br />
+        to pro</Banner
+      >
     </aside>
   </section>
 </template>
@@ -58,6 +65,12 @@ export default {
   main {
     padding: 5rem;
   }
+}
+
+.dataRange {
+  margin-top: 1rem;
+  opacity: 0.5;
+  margin-bottom: 2rem;
 }
 
 .item {
@@ -104,6 +117,6 @@ export default {
   background: var(--lightBlue);
   margin: 2rem;
   border-radius: 24px;
-  padding: 4rem 2rem;
+  padding: 4rem 2rem 1rem;
 }
 </style>
