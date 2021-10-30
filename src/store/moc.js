@@ -64,4 +64,12 @@ export const salesMoc = [
     label: "Demo product",
     value: 320,
   },
+  {
+    label: "Rainbow Pencil Holder",
+    value: 120,
+  },
+  {
+    label: "Hand Craft Cupcake Deodorizer",
+    value: 80,
+  },
 ];

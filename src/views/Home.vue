@@ -24,6 +24,7 @@
     </main>
     <aside class="asideOverview">
       <BlockProgress header="Sales" :data="salesMoc" />
+      <Banner>Upgrade to pro</Banner>
     </aside>
   </section>
 </template>
@@ -31,12 +32,15 @@
 <script>
 // moc
 import { LastOrdersMoc, salesMoc } from "@/store/moc";
+
+// Components
 import WsChart from "@/components/WsChart";
 import BlockProgress from "@/components/BlockProgress";
+import Banner from "@/components/Banner";
 
 export default {
   name: "Home",
-  components: { WsChart, BlockProgress },
+  components: { WsChart, BlockProgress, Banner },
   data() {
     return {
       LastOrdersMoc,
@@ -49,7 +53,7 @@ export default {
 <style lang="scss" scoped>
 .wrapp {
   display: grid;
-  grid-template-columns: 1fr 35%;
+  grid-template-columns: 1fr 30%;
 
   main {
     padding: 5rem;
