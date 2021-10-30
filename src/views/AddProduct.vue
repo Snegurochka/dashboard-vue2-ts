@@ -13,10 +13,7 @@
     />
     <BaseInput label="Price" v-model="product.price" />
     <BaseInput label="Quantity" type="number" v-model="product.quantity" />
-    <p>
-      <label>Description</label>
-      <textarea v-model="product.description"></textarea>
-    </p>
+    <BaseTextarea label="Description" v-model="product.description" />
     <BaseButton>Add</BaseButton>
   </form>
 </template>
