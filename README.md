@@ -1,13 +1,17 @@
 # Seller Dashboard
 
+# Preview
+!["Seller Dashboard"](http://web-esse.ru/wp-includes/assets/seller_dashboard.png "Seller Dashboard")
+
 ## Pages:
-- Dashboard
+- Dashboard - Shows an awesome sales chart via vue-chartjs. https://vue-chartjs.org/
 - Products List
 - Product details
 - Adding product - the form uses Base Components (BaseInput, Base Select, etc.) for the same behavior and style. I used the "vuelidate" library for form validation.
 https://github.com/vuelidate/vuelidate
 <p>
-<img src="https://vuelidate-next.netlify.app/logotype.png" alt="Vuelidate" width="240px">
+<img src="https://vuelidate-next.netlify.app/logotype.png" alt="vue-chartjs" width="200px">
+<img src="https://vue-chartjs.org/vue-chartjs.png" alt="Vuelidate" width="200px">
 </p>
 
 ## Technologies used: 
