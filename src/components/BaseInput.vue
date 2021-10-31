@@ -7,6 +7,7 @@
       @input="updateValue"
       v-bind="$attrs"
       v-on="listeners"
+      class="form-control"
     />
   </div>
 </template>

@@ -1,67 +1,69 @@
 <template>
-  <form @submit.prevent="addProduct">
-    <h3>Add product</h3>
-    <BaseInput
-      label="Product name"
-      v-model="product.title"
-      placeholder="Title"
-      @blur="$v.product.title.$touch()"
-      :class="{ error: $v.product.title.$error }"
-    />
-    <template v-if="$v.product.title.$error">
-      <p v-if="!$v.product.title.required" class="errorMessage">
-        Product name is required.
-      </p>
-    </template>
-    <BaseSelectObj
-      label="Category"
-      :options="categories"
-      v-model="product.id_category"
-      @blur="$v.product.id_category.$touch()"
-      :class="{ error: $v.product.id_category.$error }"
-    />
-    <template v-if="$v.product.id_category.$error">
-      <p v-if="!$v.product.id_category.required" class="errorMessage">
-        Category is required.
-      </p>
-    </template>
-    <BaseInput
-      label="Price"
-      v-model="product.price"
-      @blur="$v.product.price.$touch()"
-      :class="{ error: $v.product.price.$error }"
-    />
-    <template v-if="$v.product.price.$error">
-      <p v-if="!$v.product.price.required" class="errorMessage">
-        Price is required.
-      </p>
-    </template>
-    <BaseInput
-      label="Quantity"
-      type="number"
-      v-model="product.quantity"
-      @blur="$v.product.quantity.$touch()"
-      :class="{ error: $v.product.quantity.$error }"
-    />
-    <template v-if="$v.product.quantity.$error">
-      <p v-if="!$v.product.quantity.required" class="errorMessage">
-        Quantity is required.
-      </p>
-    </template>
-    <BaseTextarea
-      label="Description"
-      v-model="product.description"
-      @blur="$v.product.description.$touch()"
-      :class="{ error: $v.product.description.$error }"
-    />
-    <template v-if="$v.product.description.$error">
-      <p v-if="!$v.product.description.required" class="errorMessage">
-        Description is required.
-      </p>
-    </template>
-    <BaseButton :disabled="$v.anyError">Add</BaseButton>
-    <p v-if="$v.anyError">Please fill out the required field(s).</p>
-  </form>
+  <main class="wrapper">
+    <form @submit.prevent="addProduct" class="card">
+      <h3>Add product</h3>
+      <BaseInput
+        label="Product name"
+        v-model="product.title"
+        placeholder="Title"
+        @blur="$v.product.title.$touch()"
+        :class="{ error: $v.product.title.$error }"
+      />
+      <template v-if="$v.product.title.$error">
+        <p v-if="!$v.product.title.required" class="errorMessage">
+          Product name is required.
+        </p>
+      </template>
+      <BaseSelectObj
+        label="Category"
+        :options="categories"
+        v-model="product.id_category"
+        @blur="$v.product.id_category.$touch()"
+        :class="{ error: $v.product.id_category.$error }"
+      />
+      <template v-if="$v.product.id_category.$error">
+        <p v-if="!$v.product.id_category.required" class="errorMessage">
+          Category is required.
+        </p>
+      </template>
+      <BaseInput
+        label="Price"
+        v-model="product.price"
+        @blur="$v.product.price.$touch()"
+        :class="{ error: $v.product.price.$error }"
+      />
+      <template v-if="$v.product.price.$error">
+        <p v-if="!$v.product.price.required" class="errorMessage">
+          Price is required.
+        </p>
+      </template>
+      <BaseInput
+        label="Quantity"
+        type="number"
+        v-model="product.quantity"
+        @blur="$v.product.quantity.$touch()"
+        :class="{ error: $v.product.quantity.$error }"
+      />
+      <template v-if="$v.product.quantity.$error">
+        <p v-if="!$v.product.quantity.required" class="errorMessage">
+          Quantity is required.
+        </p>
+      </template>
+      <BaseTextarea
+        label="Description"
+        v-model="product.description"
+        @blur="$v.product.description.$touch()"
+        :class="{ error: $v.product.description.$error }"
+      />
+      <template v-if="$v.product.description.$error">
+        <p v-if="!$v.product.description.required" class="errorMessage">
+          Description is required.
+        </p>
+      </template>
+      <BaseButton :disabled="$v.anyError">Add</BaseButton>
+      <p v-if="$v.anyError">Please fill out the required field(s).</p>
+    </form>
+  </main>
 </template>
 
 <script>
@@ -110,4 +112,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.wrapper {
+  padding: 5rem;
+  position: relative;
+}
+</style>

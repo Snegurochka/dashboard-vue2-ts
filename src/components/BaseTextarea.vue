@@ -1,7 +1,11 @@
 <template>
   <div class="field">
     <label v-if="label">{{ label }}</label>
-    <textarea :value="value" @input="updateValue"></textarea>
+    <textarea
+      :value="value"
+      @input="updateValue"
+      class="form-control"
+    ></textarea>
   </div>
 </template>
 

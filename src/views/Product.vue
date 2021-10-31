@@ -34,7 +34,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .wrapper {
   padding: 5rem;
   position: relative;

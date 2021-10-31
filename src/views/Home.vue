@@ -63,7 +63,7 @@ export default {
   grid-template-columns: 1fr 30%;
 
   main {
-    padding: 5rem;
+    padding: 5rem 5rem 2rem;
   }
 }
 
