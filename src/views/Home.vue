@@ -2,12 +2,12 @@
   <section class="wrapp">
     <main>
       <h1>Dashboard</h1>
-      <div class="chart">
+      <div class="chart card">
         <span class="dataRange">January - May, 2021</span>
         <WsChart />
       </div>
 
-      <BaseBlockOverview header="Last orders">
+      <BaseBlockOverview header="Last orders" class="card">
         <ul>
           <li v-for="order in LastOrdersMoc" :key="order.id" class="item">
             <div class="itemLeft">

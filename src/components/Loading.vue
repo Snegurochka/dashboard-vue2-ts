@@ -8,6 +8,9 @@ export default {};
 
 <style>
 .loader {
+  position: absolute;
+  top: 130px;
+  left: 45%;
   border: 5px solid hsl(0, 0%, 66%);
   border-top: 5px solid var(--darkGrey);
   border-radius: 50%;

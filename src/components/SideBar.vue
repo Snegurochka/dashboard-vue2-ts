@@ -7,10 +7,9 @@
         :key="ind"
         class="navbar__item"
         :to="{ name: item.route }"
-        ><font-awesome-icon :icon="item.icon" class="icon" />{{
-          item.text
-        }}</router-link
       >
+        <font-awesome-icon :icon="item.icon" class="icon" /> {{ item.text }}
+      </router-link>
     </nav>
   </div>
 </template>
@@ -51,6 +50,7 @@ export default {
 .sidebar {
   display: flex;
   flex-wrap: wrap;
+  min-height: 100vh;
   align-content: flex-start;
   flex-direction: row;
   background: var(--darkGrey);
