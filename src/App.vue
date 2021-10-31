@@ -57,6 +57,7 @@ code {
   --white: #fff;
   --lightGrey: #dedede;
   --lightBlue: #dbeafe;
+  --lighterBlue: #f6faff;
   --darkGrey: #3f4d67;
   --bg: #f4f7fa;
   --primary: #80ceca;
@@ -71,7 +72,13 @@ code {
   h1 {
     font-weight: 600;
     font-size: 40px;
-    margin: 0;
+    margin: 0 0 24px;
   }
+}
+
+.card {
+  background: #fff;
+  padding: 24px;
+  box-shadow: 0 1px 20px 0 rgb(69 90 100 / 8%);
 }
 </style>
