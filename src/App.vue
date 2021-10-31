@@ -80,5 +80,11 @@ code {
   background: #fff;
   padding: 24px;
   box-shadow: 0 1px 20px 0 rgb(69 90 100 / 8%);
+
+  h3 {
+    margin: 0 0 14px;
+    border-bottom: 1px solid var(--lightGrey);
+    padding-bottom: 8px;
+  }
 }
 </style>

@@ -4,13 +4,24 @@
     <span>{{ product.title }}</span>
     <span>{{ product.price }}$</span>
     <span>{{ product.quantity }}</span>
-    <router-link :to="{ name: 'product', params: { id: product.id } }">
-      view
-    </router-link>
+    <span>
+      <BaseButton
+        @click="$router.push({ name: 'product', params: { id: product.id } })"
+        class="btn-primary"
+      >
+        <font-awesome-icon icon="eye" class="icon" />
+        View
+      </BaseButton>
+    </span>
   </div>
 </template>
 
 <script>
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faEye);
+
 export default {
   name: "ProductItem",
   props: {
