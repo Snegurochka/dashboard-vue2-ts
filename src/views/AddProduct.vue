@@ -1,7 +1,7 @@
 <template>
   <main class="wrapper">
     <form @submit.prevent="addProduct" class="card">
-      <h3>Add product</h3>
+      <h3><font-awesome-icon icon="plus" class="icon" /> Add product</h3>
       <BaseInput
         label="Product name"
         v-model="product.title"
@@ -70,6 +70,11 @@
 import { mapState } from "vuex";
 import { required } from "vuelidate/lib/validators";
 
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faPlus);
+
 export default {
   name: "AddProduct",
   data() {
@@ -91,10 +96,14 @@ export default {
   },
   methods: {
     addProduct() {
-      this.$store.dispatch("addProduct", this.product).then(() => {
-        this.$router.push({ name: "products" });
-        this.product = this.createNewProductObj();
-      });
+      this.$v.$touch();
+
+      if (!this.$v.$invalid) {
+        this.$store.dispatch("products/addProduct", this.product).then(() => {
+          this.$router.push({ name: "products" });
+          this.product = this.createNewProductObj();
+        });
+      }
     },
     createNewProductObj() {
       const id = Math.floor(Math.random() * 100000);
