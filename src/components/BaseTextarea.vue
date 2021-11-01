@@ -10,19 +10,9 @@
 </template>
 
 <script>
+import { formFieldMixin } from "../mixins/formFieldMixin";
 export default {
-  props: {
-    label: {
-      type: String,
-      default: "",
-    },
-    value: [String, Number],
-  },
-  methods: {
-    updateValue(evt) {
-      this.$emit("input", evt.target.value);
-    },
-  },
+  mixins: [formFieldMixin],
 };
 </script>
 
