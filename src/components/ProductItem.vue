@@ -2,7 +2,7 @@
   <div class="wrapper">
     <span>{{ product.id }}</span>
     <span>{{ product.title }}</span>
-    <span>{{ product.price }}$</span>
+    <span>{{ product.price | price }}</span>
     <span>{{ product.quantity }}</span>
     <span>
       <BaseButton

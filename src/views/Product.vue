@@ -2,7 +2,7 @@
   <section class="wrapper">
     <div v-if="!isError" class="card">
       <h3>Product {{ product.title }}</h3>
-      {{ product.price }}$
+      {{ product.price | price }}
       <p>
         {{ product.description }}
       </p>

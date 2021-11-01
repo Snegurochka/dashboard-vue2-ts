@@ -17,11 +17,11 @@
               <div class="itemDetails">
                 <p class="itemTitle">Product: {{ order.product }}</p>
                 <span class="itemTime">
-                  {{ order.date }} • {{ order.location }}
+                  {{ order.date | date }} • {{ order.location }}
                 </span>
               </div>
             </div>
-            <span class="itemPrice"> {{ order.price.toFixed(2) }} $ </span>
+            <span class="itemPrice"> {{ order.price | price }} </span>
           </li>
         </ul>
       </BaseBlockOverview>
