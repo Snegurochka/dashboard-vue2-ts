@@ -7,19 +7,17 @@
       @input="updateValue"
       v-bind="$attrs"
       v-on="listeners"
+      class="form-control"
     />
   </div>
 </template>
 
 <script>
+import { formFieldMixin } from "../mixins/formFieldMixin";
+
 export default {
-  inheritAttrs: false,
+  mixins: [formFieldMixin],
   props: {
-    label: {
-      type: String,
-      default: "",
-    },
-    value: [String, Number],
     type: {
       type: String,
       default: "text",
@@ -31,11 +29,6 @@ export default {
         ...this.$listeners,
         input: this.updateValue,
       };
-    },
-  },
-  methods: {
-    updateValue(evt) {
-      this.$emit("input", evt.target.value);
     },
   },
 };

@@ -19,7 +19,7 @@ export const LastOrdersMoc = [
     customer: "Testt Reff",
     product: "Cushion for decor",
     ref: "JNMSCFEJW",
-    date: "22-04-2021",
+    date: "2021-05-16",
     location: "Quebec",
     price: 132,
     status: {
@@ -32,7 +32,7 @@ export const LastOrdersMoc = [
     customer: "Anna Snow",
     product: "Demo product",
     ref: "QWSSCFEJW",
-    date: "21-04-2021",
+    date: "2021-05-14",
     location: "Ottawa",
     price: 165,
     status: {
@@ -45,7 +45,7 @@ export const LastOrdersMoc = [
     customer: "Testt Reff",
     product: "Cushion for decor",
     ref: "JNMSCFEJW",
-    date: "20-04-2021",
+    date: "2021-04-14",
     location: "Quebec",
     price: 72,
     status: {

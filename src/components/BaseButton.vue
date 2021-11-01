@@ -17,6 +17,7 @@ export default {
 <style>
 .button {
   color: var(--white);
+  background-color: var(--lightGrey);
   padding: 14px 20px;
   border-radius: 0.25rem;
   display: block;

@@ -9,9 +9,14 @@ import Vuelidate from "vuelidate";
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
+import priceFilter from "@/filters/price";
+import dateFilter from "@/filters/date";
+
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 Vue.use(Vuelidate);
+Vue.filter("price", priceFilter);
+Vue.filter("date", dateFilter);
 
 const requireComponent = require.context(
   "./components",

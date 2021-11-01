@@ -37,6 +37,13 @@ ul {
   list-style: none;
 }
 
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -80,5 +87,66 @@ code {
   background: #fff;
   padding: 24px;
   box-shadow: 0 1px 20px 0 rgb(69 90 100 / 8%);
+
+  h3 {
+    margin: 0 0 14px;
+    border-bottom: 1px solid var(--lightGrey);
+    padding-bottom: 8px;
+  }
+}
+
+.field {
+  margin-bottom: 1.25rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-control {
+    display: block;
+    width: 60%;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--darkGrey);
+    background-color: var(--white);
+    background-clip: padding-box;
+    border: 1px solid var(--lightGrey);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    -webkit-box-shadow: 0;
+    box-shadow: 0;
+    -webkit-transition: border-color 0.15s ease-in-out,
+      -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out,
+      -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+      -webkit-box-shadow 0.15s ease-in-out;
+  }
+}
+
+.form-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%231D1D42' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+}
+
+.field.error {
+  margin-bottom: 4px;
+}
+
+.field.error .form-control {
+  border-color: red;
+}
+
+.errorMessage {
+  color: red;
+  margin-bottom: 14px;
 }
 </style>

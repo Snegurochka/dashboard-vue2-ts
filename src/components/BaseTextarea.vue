@@ -1,24 +1,18 @@
 <template>
   <div class="field">
     <label v-if="label">{{ label }}</label>
-    <textarea :value="value" @input="updateValue"></textarea>
+    <textarea
+      :value="value"
+      @input="updateValue"
+      class="form-control"
+    ></textarea>
   </div>
 </template>
 
 <script>
+import { formFieldMixin } from "../mixins/formFieldMixin";
 export default {
-  props: {
-    label: {
-      type: String,
-      default: "",
-    },
-    value: [String, Number],
-  },
-  methods: {
-    updateValue(evt) {
-      this.$emit("input", evt.target.value);
-    },
-  },
+  mixins: [formFieldMixin],
 };
 </script>
 

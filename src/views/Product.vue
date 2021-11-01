@@ -1,8 +1,8 @@
 <template>
   <section class="wrapper">
-    <div v-if="!isError">
+    <div v-if="!isError" class="card">
       <h3>Product {{ product.title }}</h3>
-      {{ product.price }}$
+      {{ product.price | price }}
       <p>
         {{ product.description }}
       </p>
@@ -34,4 +34,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.wrapper {
+  padding: 5rem;
+  position: relative;
+}
+</style>

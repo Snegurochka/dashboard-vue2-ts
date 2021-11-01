@@ -72,19 +72,17 @@ export default {
 .navbar__item {
   padding: 14px 24px;
   width: 100%;
-  color: honeydew;
+  color: var(--lighterBlue);
   text-decoration: none;
+  transition: all 200ms ease;
 }
 
-.navbar__item:hover {
-  color: #1dc4e9;
-}
-
-.navbar__item.active {
-  color: #1dc4e9;
+.navbar__item:hover,
+.navbar__item.router-link-exact-active {
+  color: var(--primary);
 }
 
 .icon {
-  padding-right: 8px;
+  margin-right: 8px;
 }
 </style>
