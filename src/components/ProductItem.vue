@@ -4,13 +4,20 @@
     <span>{{ product.title }}</span>
     <span>{{ product.price | price }}</span>
     <span>{{ product.quantity }}</span>
-    <span>
+    <span class="actions">
       <BaseButton
         @click="$router.push({ name: 'product', params: { id: product.id } })"
         class="btn-primary"
       >
         <font-awesome-icon icon="eye" class="icon" />
-        View
+      </BaseButton>
+      <BaseButton
+        @click="
+          $router.push({ name: 'productEdit', params: { id: product.id } })
+        "
+        class="btn-primary"
+      >
+        <font-awesome-icon icon="pen" class="icon" />
       </BaseButton>
     </span>
   </div>
@@ -18,9 +25,9 @@
 
 <script>
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faPen } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faEye);
+library.add(faEye, faPen);
 
 export default {
   name: "ProductItem",
@@ -37,5 +44,10 @@ export default {
   gap: 8px;
   padding: 14px;
   text-align: left;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
 }
 </style>

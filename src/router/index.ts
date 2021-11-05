@@ -4,7 +4,9 @@ import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import OrderDetail from "../views/OrderDetail.vue";
 import AddProduct from "../views/AddProduct.vue";
-import Product from "../views/Product.vue";
+import ProductIndex from "../views/product/Index.vue";
+import ProductDetails from "../views/product/Details.vue";
+import ProductEdit from "../views/product/Edit.vue";
 import NotFound from "../views/NotFound.vue";
 
 Vue.use(VueRouter);
@@ -38,9 +40,21 @@ const routes: Array<RouteConfig> = [
   },
   {
     path: "/product/:id",
-    name: "product",
-    component: Product,
+    name: "productIndex",
+    component: ProductIndex,
     props: true,
+    children: [
+      {
+        path: "",
+        name: "product",
+        component: ProductDetails,
+      },
+      {
+        path: "edit",
+        name: "productEdit",
+        component: ProductEdit,
+      },
+    ],
   },
   {
     path: "/add-product",
