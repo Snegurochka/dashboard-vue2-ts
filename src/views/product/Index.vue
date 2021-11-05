@@ -1,11 +1,7 @@
 <template>
   <section class="wrapper">
     <div v-if="!isError" class="card">
-      <h3>Product {{ product.title }}</h3>
-      {{ product.price | price }}
-      <p>
-        {{ product.description }}
-      </p>
+      <router-view :product="product" />
     </div>
     <div v-else>
       <h3>Opps! This product not found</h3>
@@ -20,6 +16,7 @@
 import { mapState } from "vuex";
 
 export default {
+  name: "ProductDetails",
   props: ["id"],
   created() {
     this.$store.dispatch("products/setProduct", this.id);
