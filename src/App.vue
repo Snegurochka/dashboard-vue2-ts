@@ -105,7 +105,7 @@ code {
 
   .form-control {
     display: block;
-    width: 60%;
+    width: 100%;
     padding: 0.5rem 0.75rem;
     font-size: 1rem;
     font-weight: 400;

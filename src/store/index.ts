@@ -6,19 +6,36 @@ import * as products from "@/store/modules/products";
 import * as notifications from "@/store/modules/notifications";
 
 import { ICategory, IOrder, RootState } from "@/interfaces/interfaces";
+import { auth } from "@/plugins/firebase";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    isUserLoggedIn: false as boolean,
     categories: [
       { id: 1, name: "Cat 1" },
       { id: 2, name: "Cat 2" },
     ] as ICategory[],
     orders: [] as IOrder[],
   } as RootState,
-  mutations: {},
-  actions: {},
+  mutations: {
+    TOGLE_AUTH(s) {
+      s.isUserLoggedIn = !s.isUserLoggedIn;
+    },
+  },
+  actions: {
+    async login({ commit }, payload) {
+      await auth.signInWithEmailAndPassword(payload.email, payload.password);
+
+      commit("TOGLE_AUTH");
+    },
+
+    async signout({ commit }) {
+      await auth.signOut();
+      commit("TOGLE_AUTH");
+    },
+  },
   modules: {
     user,
     products,

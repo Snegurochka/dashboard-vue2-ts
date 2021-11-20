@@ -10,17 +10,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { IOrder } from "../interfaces/interfaces";
 export default {
   name: "OrderItem",
   props: {
-    order: {
-      customer: String,
-      id: Number,
-      product: String,
-      ref: String,
-      status: { code: String, id: Number },
-    },
+    order: {} as IOrder,
   },
 };
 </script>

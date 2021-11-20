@@ -15,6 +15,7 @@
     "@fortawesome/vue-fontawesome": "^2.0.6",
     "chart.js": "^2.9.4",
     "core-js": "^3.6.5",
+    "firebase": "^8.10.0",
     "lodash": "^4.17.21",
     "vue": "^2.6.11",
     "vue-chartjs": "^3.5.1",

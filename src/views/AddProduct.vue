@@ -8,6 +8,7 @@
         placeholder="Title"
         @blur="$v.product.title.$touch()"
         :class="{ error: $v.product.title.$error }"
+        data-testid="title"
       />
       <template v-if="$v.product.title.$error">
         <p v-if="!$v.product.title.required" class="errorMessage">

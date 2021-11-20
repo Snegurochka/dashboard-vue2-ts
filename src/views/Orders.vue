@@ -18,6 +18,7 @@ import OrderItem from "./../components/OrderItem.vue";
 import { OrdersApi } from "./../API";
 
 export default {
+  name: "Orders",
   components: { OrderItem },
   data() {
     return {
