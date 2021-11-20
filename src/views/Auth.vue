@@ -1,9 +1,20 @@
 <template>
-  <div>Auth</div>
+  <main class="wrapper">
+    <login-form />
+  </main>
 </template>
 
 <script>
-export default {};
+import LoginForm from "@/components/LoginForm.vue";
+export default {
+  components: { LoginForm },
+  name: "Auth",
+};
 </script>
 
-<style></style>
+<style scoped>
+.wrapper {
+  padding: 5rem;
+  position: relative;
+}
+</style>

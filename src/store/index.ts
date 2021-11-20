@@ -19,7 +19,11 @@ export default new Vuex.Store({
     orders: [] as IOrder[],
   } as RootState,
   mutations: {},
-  actions: {},
+  actions: {
+    login() {
+      console.log("ok login");
+    },
+  },
   modules: {
     user,
     products,
