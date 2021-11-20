@@ -20,6 +20,9 @@ https://github.com/vuelidate/vuelidate
 All the requests to the REST endpoints are stored in the API.ts file.
 https://firebase.google.com/docs/reference/rest/database
 
+### Firebase Auth API.
+Uses Firebase for authentication.
+
 ### Vue 2 and Vuex.
 I love working with this framework because it is very easy to use and really efficient for getting things done.
 Store is divided into modules: products, user, notifications.
