@@ -2,6 +2,7 @@ import { notificationStateType } from "@/store/modules/notifications";
 import { productStateType } from "@/store/modules/products";
 
 export interface RootState {
+  isUserLoggedIn: boolean;
   categories: ICategory[];
   orders: IOrder[];
   user: IUser;

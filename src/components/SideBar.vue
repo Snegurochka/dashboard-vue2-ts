@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar">
-    <span class="user">Hi, {{ userName }}</span>
+    <span v-show="loggedIn" class="user">Hi, {{ userName }}</span>
     <nav class="navbar">
       <router-link
         v-for="(item, ind) in items"
@@ -29,6 +29,7 @@ export default {
   name: "SideBar",
 
   data: () => ({
+    loggedIn: true,
     selectedItem: 0,
     items: [
       { icon: "home", text: "Home", route: "home" },

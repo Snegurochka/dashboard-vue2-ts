@@ -29,7 +29,7 @@ export default {
   name: "BlockProgress",
   props: {
     header: {
-      trpe: String,
+      type: String,
     },
     data: {
       type: Array,

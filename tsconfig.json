@@ -33,8 +33,10 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx"
-, "src/store/moc.js", "src/mixins/formFieldMixin.js"  ],
+    "tests/**/*.tsx",
+    "src/store/moc.js",
+    "src/mixins/formFieldMixin.js"
+  ],
   "exclude": [
     "node_modules"
   ]

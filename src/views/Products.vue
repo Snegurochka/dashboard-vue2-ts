@@ -46,6 +46,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 library.add(faPlus);
 
 export default {
+  name: "Products",
   components: { ProductItem, Loading },
   created() {
     this.$store.dispatch("products/setProducts");
