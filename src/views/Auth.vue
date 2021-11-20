@@ -16,5 +16,7 @@ export default {
 .wrapper {
   padding: 5rem;
   position: relative;
+  width: 676px;
+  margin: 0 auto;
 }
 </style>

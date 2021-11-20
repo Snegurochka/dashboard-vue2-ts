@@ -18,10 +18,16 @@ export default new Vuex.Store({
     ] as ICategory[],
     orders: [] as IOrder[],
   } as RootState,
-  mutations: {},
+  mutations: {
+    TOGLE_AUTH(s) {
+      s.isUserLoggedIn = !s.isUserLoggedIn;
+    },
+  },
   actions: {
-    login() {
-      console.log("ok login");
+    login({ commit }, payload) {
+      console.log("ok login", payload);
+
+      commit("TOGLE_AUTH");
     },
   },
   modules: {

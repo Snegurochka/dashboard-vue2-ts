@@ -31,7 +31,9 @@
           Password address is required.
         </p>
       </template>
-      <BaseButton :disabled="$v.anyError">Send</BaseButton>
+      <BaseButton :disabled="$v.anyError" className="btn-primary"
+        >Send</BaseButton
+      >
       <p v-if="$v.anyError">Please fill out the required field(s).</p>
     </form>
   </div>
