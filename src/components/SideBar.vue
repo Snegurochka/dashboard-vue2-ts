@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar">
-    <span v-show="loggedIn" class="user">Hi, {{ userName }}</span>
+    <span v-show="isUserLoggedIn" class="user">Hi, {{ userName }}</span>
     <nav class="navbar">
       <router-link
         v-for="(item, ind) in items"
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faUserSecret,
@@ -29,7 +30,6 @@ export default {
   name: "SideBar",
 
   data: () => ({
-    loggedIn: true,
     selectedItem: 0,
     items: [
       { icon: "home", text: "Home", route: "home" },
@@ -40,6 +40,7 @@ export default {
   }),
 
   computed: {
+    ...mapState(["isUserLoggedIn"]),
     userName() {
       return this.$store.state.user.user.name;
     },
@@ -60,7 +61,7 @@ export default {
 }
 
 .user {
-  padding: 24px;
+  padding: 24px 24px 0;
   color: var(--white);
 }
 
@@ -68,6 +69,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
+  margin-top: 48px;
 }
 
 .navbar__item {
