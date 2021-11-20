@@ -15,6 +15,7 @@
         <p v-if="!$v.user.email.required" class="errorMessage">
           Email address is required.
         </p>
+        <p v-if="!$v.user.email.email" class="errorMessage">Email invalid.</p>
       </template>
 
       <BaseInput
@@ -40,7 +41,7 @@
 </template>
 
 <script>
-import { required } from "vuelidate/lib/validators";
+import { required, email } from "vuelidate/lib/validators";
 export default {
   name: "LoginForm",
   data() {
@@ -54,7 +55,7 @@ export default {
   },
   validations: {
     user: {
-      email: { required },
+      email: { required, email },
       password: { required },
     },
   },

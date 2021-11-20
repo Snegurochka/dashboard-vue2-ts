@@ -1,6 +1,11 @@
 <template>
   <div class="sidebar">
-    <span v-show="isUserLoggedIn" class="user">Hi, {{ userName }}</span>
+    <div v-show="isUserLoggedIn" class="user">
+      Hi, {{ userName }}
+      <div class="signout navbar__item" @click.prevent="signout">
+        Logout <font-awesome-icon icon="sign-out-alt" class="icon" />
+      </div>
+    </div>
     <nav class="navbar">
       <router-link
         v-for="(item, ind) in items"
@@ -22,9 +27,10 @@ import {
   faHome,
   faFolder,
   faShoppingBag,
+  faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faUserSecret, faHome, faFolder, faShoppingBag);
+library.add(faUserSecret, faHome, faFolder, faShoppingBag, faSignOutAlt);
 
 export default {
   name: "SideBar",
@@ -38,11 +44,19 @@ export default {
       { icon: "shopping-bag", text: "Orders", route: "orders" },
     ],
   }),
-
   computed: {
     ...mapState(["isUserLoggedIn"]),
     userName() {
       return this.$store.state.user.user.name;
+    },
+  },
+  methods: {
+    signout() {
+      this.$store.dispatch("signout");
+
+      if (this.$route.meta.requiresAuth) {
+        this.$router.push({ name: "auth" });
+      }
     },
   },
 };
@@ -63,6 +77,11 @@ export default {
 .user {
   padding: 24px 24px 0;
   color: var(--white);
+}
+
+.navbar__item.signout {
+  padding: 8px 0;
+  cursor: pointer;
 }
 
 .navbar {

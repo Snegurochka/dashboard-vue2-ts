@@ -30,6 +30,11 @@ export default new Vuex.Store({
 
       commit("TOGLE_AUTH");
     },
+
+    async signout({ commit }) {
+      await auth.signOut();
+      commit("TOGLE_AUTH");
+    },
   },
   modules: {
     user,
