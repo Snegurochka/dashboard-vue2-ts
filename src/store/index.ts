@@ -6,6 +6,7 @@ import * as products from "@/store/modules/products";
 import * as notifications from "@/store/modules/notifications";
 
 import { ICategory, IOrder, RootState } from "@/interfaces/interfaces";
+import { auth } from "@/plugins/firebase";
 
 Vue.use(Vuex);
 
@@ -24,8 +25,8 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    login({ commit }, payload) {
-      console.log("ok login", payload);
+    async login({ commit }, payload) {
+      await auth.signInWithEmailAndPassword(payload.email, payload.password);
 
       commit("TOGLE_AUTH");
     },

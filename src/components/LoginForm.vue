@@ -59,14 +59,15 @@ export default {
     },
   },
   methods: {
-    login() {
+    async login() {
       this.error = false;
       try {
-        this.$store.dispatch("login", this.user);
+        await this.$store.dispatch("login", this.user);
       } catch (e) {
         console.log(e);
         this.error = true;
       }
+      this.$router.push({ name: "home" });
     },
   },
 };
