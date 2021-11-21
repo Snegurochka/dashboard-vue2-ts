@@ -64,10 +64,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-h1 {
-  margin-bottom: 0px;
-}
-
 .products__list {
   margin: 38px 0;
 }

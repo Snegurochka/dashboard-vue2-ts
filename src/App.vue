@@ -90,6 +90,11 @@ code {
   header {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 24px;
+
+    h1 {
+      margin-bottom: 0px;
+    }
   }
 }
 

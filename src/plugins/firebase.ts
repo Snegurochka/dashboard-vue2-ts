@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import "firebase/storage";
 import { VUE_APP_AUTH_API_KEY } from "../const";
 
 // Your web app's Firebase configuration
@@ -21,5 +22,7 @@ firebase.initializeApp(firebaseConfig);
 
 export const auth = firebase.auth();
 export const db = firebase.firestore();
+export const storage = firebase.storage();
 
+export const sellersCollection = db.collection("sellers");
 export const ordersCollection = db.collection("orders");
