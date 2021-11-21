@@ -83,8 +83,18 @@ code {
   }
 }
 
+.wrapp_content {
+  padding: 5rem;
+  position: relative;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
 .card {
-  background: #fff;
+  background: var(--white);
   padding: 24px;
   box-shadow: 0 1px 20px 0 rgb(69 90 100 / 8%);
 

@@ -1,13 +1,16 @@
 <template>
-  <div class="wrapper">
-    <span>Order N {{ order.id }}</span>
-    <span># {{ order.ref }}</span>
-    <span>{{ order.customer }}</span>
-    <span>{{ order.product }}</span>
-    <router-link :to="{ name: 'order', params: { id: order.id } }">
-      view
-    </router-link>
-  </div>
+  <tr>
+    <td>{{ order.id }}</td>
+    <td># {{ order.ref }}</td>
+    <td>{{ order.customer }}</td>
+    <td>{{ order.product }}</td>
+    <td>{{ order.location }}</td>
+    <td>
+      <router-link :to="{ name: 'order', params: { id: order.id } }">
+        view
+      </router-link>
+    </td>
+  </tr>
 </template>
 
 <script lang="ts">
