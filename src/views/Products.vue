@@ -1,5 +1,5 @@
 <template>
-  <section class="wrapp">
+  <section class="wrapp_content">
     <header>
       <h1>Products {{ user.user.name }}</h1>
       <BaseButton @click="$router.push('add-product')" class="btn-primary">
@@ -66,15 +66,6 @@ export default {
 <style lang="scss" scoped>
 h1 {
   margin-bottom: 0px;
-}
-.wrapp {
-  padding: 5rem;
-  position: relative;
-
-  header {
-    display: flex;
-    justify-content: space-between;
-  }
 }
 
 .products__list {

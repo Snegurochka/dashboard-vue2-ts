@@ -81,3 +81,10 @@ export const salesMoc = [
     value: 160,
   },
 ];
+
+export const orderStatuses = [
+  "Payment accepted",
+  "Shipped",
+  "Delivered",
+  "Canceled",
+];
