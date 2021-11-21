@@ -1,5 +1,18 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <section class="wrapp_content">
+    <h1>Profile</h1>
+    <div class="card">
+      <upload />
+    </div>
+  </section>
 </template>
+
+<script>
+import Upload from "@/components/Upload.vue";
+export default {
+  components: { Upload },
+  name: "About",
+};
+</script>
+
+<style></style>
