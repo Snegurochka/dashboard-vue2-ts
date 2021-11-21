@@ -18,9 +18,6 @@
       <h5>Drop your file here</h5>
     </div>
     <input type="file" multiple @change="upload($event)" />
-    <hr />
-
-    <div></div>
   </div>
 </template>
 
