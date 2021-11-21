@@ -25,9 +25,9 @@
 </template>
 
 <script>
-//import { storage, auth, sellersCollection } from "@/plugins/firebase";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUpload } from "@fortawesome/free-solid-svg-icons";
+import { storage, auth, sellersCollection } from "@/plugins/firebase.ts";
 
 library.add(faUpload);
 
@@ -55,22 +55,24 @@ export default {
         return;
       }
 
-      // const storageRef = storage.ref();
-      // const fileRef = storageRef.child(`avatars/${file.name}`);
-      // const task = fileRef.put(file);
+      const storageRef = storage.ref();
+      const fileRef = storageRef.child(`avatars/${file.name}`);
+      const task = fileRef.put(file);
 
-      // task.on(
-      //   "state_changed",
-      //   () => {},
-      //   (e) => {
-      //     console.log(e);
-      //   },
-      //   async () => {
-      //     const url = await task.snapshot.ref.getDownloadURL();
-      //     sellersCollection.doc(auth.currentUser.uid).update({ avatar: url });
-      //     this.updateAvatar(url);
-      //   }
-      // );
+      task.on(
+        "state_changed",
+        () => {
+          console.log("upload...");
+        },
+        (e) => {
+          console.log(e);
+        },
+        async () => {
+          const url = await task.snapshot.ref.getDownloadURL();
+          sellersCollection.doc(auth.currentUser.uid).update({ avatar: url });
+          this.updateAvatar(url);
+        }
+      );
     },
   },
 };
