@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { storage } from "@/plugins/firebase";
+//import { storage, auth, sellersCollection } from "@/plugins/firebase";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUpload } from "@fortawesome/free-solid-svg-icons";
 
@@ -33,6 +33,12 @@ library.add(faUpload);
 
 export default {
   name: "Upload",
+  props: {
+    updateAvatar: {
+      type: Function,
+      required: true,
+    },
+  },
   data() {
     return {
       is_dragover: false,
@@ -49,11 +55,22 @@ export default {
         return;
       }
 
-      const storageRef = storage.ref();
-      const fileRef = storageRef.child(`avatars/${file.name}`);
-      const task = fileRef.put(file);
+      // const storageRef = storage.ref();
+      // const fileRef = storageRef.child(`avatars/${file.name}`);
+      // const task = fileRef.put(file);
 
-      console.log(file);
+      // task.on(
+      //   "state_changed",
+      //   () => {},
+      //   (e) => {
+      //     console.log(e);
+      //   },
+      //   async () => {
+      //     const url = await task.snapshot.ref.getDownloadURL();
+      //     sellersCollection.doc(auth.currentUser.uid).update({ avatar: url });
+      //     this.updateAvatar(url);
+      //   }
+      // );
     },
   },
 };

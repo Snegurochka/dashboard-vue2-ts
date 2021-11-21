@@ -6,8 +6,14 @@ export interface RootState {
   categories: ICategory[];
   orders: IOrder[];
   user: IUser;
+  seller: ISeller;
   products: productStateType;
   notifications: notificationStateType;
+}
+
+export interface ISeller {
+  avatar: string;
+  name: string;
 }
 
 export interface IUser {

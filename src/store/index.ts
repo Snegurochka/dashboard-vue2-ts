@@ -5,14 +5,15 @@ import * as user from "@/store/modules/user";
 import * as products from "@/store/modules/products";
 import * as notifications from "@/store/modules/notifications";
 
-import { ICategory, IOrder, RootState } from "@/interfaces/interfaces";
-import { auth } from "@/plugins/firebase";
+import { ICategory, IOrder, ISeller, RootState } from "@/interfaces/interfaces";
+import { auth, sellersCollection } from "@/plugins/firebase";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     isUserLoggedIn: false as boolean,
+    seller: {} as ISeller,
     categories: [
       { id: 1, name: "Cat 1" },
       { id: 2, name: "Cat 2" },
@@ -23,12 +24,20 @@ export default new Vuex.Store({
     TOGLE_AUTH(s) {
       s.isUserLoggedIn = !s.isUserLoggedIn;
     },
+    SET_SELLER(s, payload: ISeller) {
+      s.seller = payload;
+    },
   },
   actions: {
     async login({ commit }, payload) {
       await auth.signInWithEmailAndPassword(payload.email, payload.password);
 
-      commit("TOGLE_AUTH");
+      if (auth.currentUser) {
+        const seller = await sellersCollection.doc(auth.currentUser.uid).get();
+        commit("TOGLE_AUTH");
+
+        commit("SET_SELLER", seller.data());
+      }
     },
 
     async signout({ commit }) {

@@ -24,4 +24,5 @@ export const auth = firebase.auth();
 export const db = firebase.firestore();
 export const storage = firebase.storage();
 
+export const sellersCollection = db.collection("sellers");
 export const ordersCollection = db.collection("orders");
