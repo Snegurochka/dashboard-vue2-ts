@@ -9,13 +9,17 @@
           <th>Customer</th>
           <th>Product</th>
           <th>location</th>
+          <th>Price</th>
+          <th>Status</th>
           <th>Actions</th>
         </thead>
         <order-item
           class="item"
-          v-for="order in orders"
+          v-for="(order, index) in orders"
           :key="order.id"
           :order="order"
+          :index="index"
+          :updateOrder="updateOrder"
         >
         </order-item>
       </table>
@@ -36,7 +40,6 @@ export default {
     };
   },
   async created() {
-    console.log(auth.currentUser.uid);
     const snapshot = await ordersCollection
       .where("seller_id", "==", auth.currentUser.uid)
       .get();
@@ -48,8 +51,11 @@ export default {
       };
       this.orders.push(order);
     });
-
-    console.log(this.orders);
+  },
+  methods: {
+    updateOrder(ind, val) {
+      this.orders[ind].status = val;
+    },
   },
 };
 </script>
@@ -57,10 +63,12 @@ export default {
 <style scoped>
 .table {
   width: 100%;
+  border-collapse: collapse;
 }
 
-.item {
-  border-bottom: 1px solid black;
+.table th {
+  text-align: left;
+  padding: 12px;
 }
 
 .list-header {

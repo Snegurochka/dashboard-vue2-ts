@@ -159,4 +159,13 @@ code {
   color: red;
   margin-bottom: 14px;
 }
+
+.actions_btn {
+  display: flex;
+  gap: 8px;
+}
+
+.w-4 {
+  width: 1rem;
+}
 </style>

@@ -1,1 +1,4 @@
-export default (value: number): string => value.toFixed(2) + " $";
+export default (value: number | string): string => {
+  const convertVal = +value;
+  return convertVal.toFixed(2) + " $";
+};

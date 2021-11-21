@@ -4,7 +4,7 @@
     <span>{{ product.title }}</span>
     <span>{{ product.price | price }}</span>
     <span>{{ product.quantity }}</span>
-    <span class="actions">
+    <span class="actions_btn">
       <BaseButton
         @click="$router.push({ name: 'product', params: { id: product.id } })"
         class="btn-primary"
@@ -44,10 +44,5 @@ export default {
   gap: 8px;
   padding: 14px;
   text-align: left;
-}
-
-.actions {
-  display: flex;
-  gap: 8px;
 }
 </style>
