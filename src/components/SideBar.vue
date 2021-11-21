@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
     <div v-show="isUserLoggedIn" class="user">
-      Hi, {{ userName }}
+      Hi, {{ seller.name }}
       <div class="signout navbar__item" @click.prevent="signout">
         Logout <font-awesome-icon icon="sign-out-alt" class="icon" />
       </div>
@@ -45,10 +45,7 @@ export default {
     ],
   }),
   computed: {
-    ...mapState(["isUserLoggedIn"]),
-    userName() {
-      return this.$store.state.user.user.name;
-    },
+    ...mapState(["isUserLoggedIn", "seller"]),
   },
   methods: {
     signout() {
