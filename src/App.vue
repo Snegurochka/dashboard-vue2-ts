@@ -2,7 +2,11 @@
   <div id="app">
     <section class="main_wrapper">
       <SideBar></SideBar>
-      <router-view />
+      <transition name="fade" mode="out-in">
+        <router-view v-slot="{ Component }">
+          <component :is="Component"></component>
+        </router-view>
+      </transition>
     </section>
   </div>
 </template>
@@ -172,5 +176,18 @@ code {
 
 .w-4 {
   width: 1rem;
+}
+
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  transition: all 0.5s linear;
+}
+
+.fade-leave-to {
+  transition: all 0.5s linear;
+  opacity: 0;
 }
 </style>
