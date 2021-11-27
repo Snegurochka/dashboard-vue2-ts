@@ -26,3 +26,4 @@ export const storage = firebase.storage();
 
 export const sellersCollection = db.collection("sellers");
 export const ordersCollection = db.collection("orders");
+export const customersCollection = db.collection("customers");
