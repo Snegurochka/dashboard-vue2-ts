@@ -36,7 +36,7 @@
     "tests/**/*.tsx",
     "src/store/moc.js",
     "src/mixins/formFieldMixin.js"
-  ],
+, "tests/**/*.js"  ],
   "exclude": [
     "node_modules"
   ]
