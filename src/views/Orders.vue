@@ -27,7 +27,7 @@
   </section>
 </template>
 
-<script lang="js">
+<script>
 import OrderItem from "./../components/OrderItem.vue";
 import { auth, ordersCollection } from "@/plugins/firebase";
 
