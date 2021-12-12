@@ -1,7 +1,6 @@
 <template>
   <section class="wrapp_content">
     <header>
-      <h1>Products {{ user.user.name }}</h1>
       <BaseButton @click="$router.push('add-product')" class="btn-primary">
         <font-awesome-icon icon="plus" class="icon" />
         add</BaseButton
@@ -49,7 +48,7 @@ export default {
   name: "Products",
   components: { ProductItem, Loading },
   created() {
-    this.$store.dispatch("products/setProducts");
+    this.getProducts();
   },
   computed: {
     //...mapGetters(["productsCount"]),
@@ -57,6 +56,9 @@ export default {
   },
   methods: {
     loadmore() {
+      this.getProducts();
+    },
+    getProducts() {
       this.$store.dispatch("products/setProducts");
     },
   },
