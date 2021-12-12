@@ -40,21 +40,25 @@ export default {
     };
   },
   async created() {
-    const snapshot = await ordersCollection
-      .where("seller_id", "==", auth.currentUser.uid)
-      .get();
-
-    snapshot.forEach((document) => {
-      const order = {
-        ...document.data(),
-        ref: document.id,
-      };
-      this.orders.push(order);
-    });
+    this.getOrders();
   },
   methods: {
     updateOrder(ind, val) {
       this.orders[ind].status = val;
+    },
+
+    async getOrders() {
+      const snapshot = await ordersCollection
+        .where("seller_id", "==", auth.currentUser.uid)
+        .get();
+
+      snapshot.forEach((document) => {
+        const order = {
+          ...document.data(),
+          ref: document.id,
+        };
+        this.orders.push(order);
+      });
     },
   },
 };
